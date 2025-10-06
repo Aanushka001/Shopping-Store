@@ -1,34 +1,149 @@
-# Overview
+#  Simple Shopping Cart
 
-Shogging Store is a full stack e-commerce platform that combines a React based frontend with a Node.js backend and Managers for data persistence. It intensifies the development of online shopping applications by providing essential features out of the box.
+A minimal e-commerce application with React frontend and Express backend. Browse products, manage cart with localStorage persistence, and complete checkouts.
 
-## Why Shogging Store?
+##  Features
 
-This project aims to simplify building scalable, maintainable shopping applications. The core features include:
+**Backend**
+- REST API with 47+ hardcoded products
+- Cart management (add, update, remove)
+- Checkout endpoint with order logging
+- In-memory order storage
 
-- <span style="color:green">**✅ Managers Integration:**</span> Facilitates reliable data storage for products, cash, and orders.
-- <span style="color:green">**✅ React Frontend:**</span> Offers a responsive UI with product browsing, cart management, and checkout capabilities.
-- <span style="color:blue">**📦 Module Backend:**</span> Class API routers and controllers for product management and order processing.
-- <span style="color:green">**✅ Seed Scope:**</span> Enables quick setup with sample data for testing and demore.
-- <span style="color:blue">**📦 Environment Carings:**</span> Supports flexible deployment across development and production environments.
-- <span style="color:blue">**📦 Submodule Management:**</span> Ensures external dependencies are seamlessly integrated for smooth collaboration.
+**Frontend**
+- Responsive product grid
+- Add to cart functionality
+- Cart modal with quantity controls
+- LocalStorage persistence
+- Real-time price calculation
 
----
+## 🛠️ Tech Stack
 
-# Getting Started
+**Frontend:** React, JavaScript, CSS3, Fetch API  
+**Backend:** Node.js, Express.js, CORS
 
-## Prerequisites
+## 📁 Project Structure
 
-The project requires the following dependencies:
+```
+ShoppingCart/
+├── client/
+│   ├── public/
+│   │   └── index.html
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── CartModal.js
+│   │   │   └── ProductGrid.js
+│   │   ├── App.js
+│   │   ├── index.js
+│   │   └── index.css
+│   ├── .env
+│   ├── .gitignore
+│   └── package.json
+├── server/
+│   ├── server.js
+│   └── package.json
+├── test_api.sh
+├── Products_api_test.sh
+└── project_structure.txt
+```
 
-- **Programming Language**: JavaScript
-- **Package Manager**: Nym
+##  Getting Started
 
-## Installation
+### Prerequisites
+- Node.js (v14+)
+- npm
+- Git Bash (for running test scripts on Windows)
 
-Build Shogging Store from the source and install dependencies:
+### Installation & Setup
 
-1. Close the repository:
-
+**1. Clone the repository**
 ```bash
-git clone https://github.com/Aanushka001/Shopping-Store
+git clone https://github.com/Aanushka001/Shopping-Store.git
+cd Shopping-Store
+```
+
+**2. Install dependencies**
+```bash
+cd server
+npm install
+
+cd ../client
+npm install
+```
+
+**3. Run the application**
+
+Terminal 1 - Start Backend:
+```bash
+cd server
+npm start
+```
+Server runs on `http://localhost:5000`
+
+Terminal 2 - Start Frontend:
+```bash
+cd client
+npm start
+```
+Client runs on `http://localhost:3000`
+
+**4. Access the app**  
+Open browser: `http://localhost:3000`
+
+## 🧪 Testing
+
+### Run Full API Test Suite
+```bash
+./test_api.sh
+```
+Tests all endpoints: health, products, cart, checkout, orders, error handling
+
+### Run Products API Test
+```bash
+./Products_api_test.sh
+```
+Tests product endpoints only: get all, get by ID, invalid IDs
+
+### Expected Test Results
+```
+All tests passed.
+Passed: 4/4 (Products test)
+16 endpoint tests (Full test)
+```
+
+##  API Endpoints
+
+### Products
+- `GET /api/products` - Get all products
+- `GET /api/products/:id` - Get product by ID
+
+### Cart
+- `GET /api/cart` - Get cart contents
+- `POST /api/cart` - Add to cart `{ "productId": "id", "quantity": 1 }`
+- `PUT /api/cart/:id` - Update quantity `{ "quantity": 2 }`
+- `DELETE /api/cart/:id` - Remove item
+- `DELETE /api/cart` - Clear cart
+
+### Checkout & Orders
+- `POST /api/checkout` - Complete order `{ "items": [...], "customerInfo": {...} }`
+- `GET /api/orders` - Get all orders
+- `GET /api/orders/:id` - Get order by ID
+
+### System
+- `GET /api/health` - Health check
+- `GET /` - API info
+
+## Manual Testing
+
+1. Open `http://localhost:3000`
+2. Browse products in the grid
+3. Click "Add to Cart" on any product
+4. Click cart icon (top right) to view cart
+5. Update quantities or remove items
+6. Click "Checkout" to complete order
+7. Refresh page - cart persists via localStorage
+
+##  Author
+
+**Aanushka**  
+GitHub: [@Aanushka001](https://github.com/Aanushka001)
