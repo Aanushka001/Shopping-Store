@@ -1,0 +1,286 @@
+{
+  "products": [
+    {
+      "_id": "68e2da3478535d896090ba3d",
+      "name": "boAt Soundbar Speaker",
+      "price": 8999,
+      "imageUrl": "https://m.media-amazon.com/images/I/61lC-uC+MSL._SX679_.jpg"
+    },
+    {
+      "_id": "68e2da3578535d896090ba3e",
+      "name": "Samsung Galaxy S24 Ultra",
+      "price": 89999,
+      "imageUrl": "https://m.media-amazon.com/images/I/717Q2swzhBL._SX679_.jpg"
+    },
+    {
+      "_id": "68e2da3578535d896090ba3f",
+      "name": "Karsaer Sunglasses",
+      "price": 2499,
+      "imageUrl": "https://m.media-amazon.com/images/I/61JRgthnRfL._SX679_.jpg"
+    },
+    {
+      "_id": "68e2da3578535d896090ba40",
+      "name": "KLOSIA Anarkali Kurta Set",
+      "price": 1899,
+      "imageUrl": "https://m.media-amazon.com/images/I/81hxNald3pL._SX679_.jpg"
+    },
+    {
+      "_id": "68e2da3578535d896090ba41",
+      "name": "Safari Trolley Bags Set",
+      "price": 5999,
+      "imageUrl": "https://m.media-amazon.com/images/I/61wU7VJsTbL._SX679_.jpg"
+    },
+    {
+      "_id": "68e2da3578535d896090ba42",
+      "name": "Art Street Wall Art",
+      "price": 1499,
+      "imageUrl": "https://m.media-amazon.com/images/I/51zIIoeD6tL._SL1000_.jpg"
+    },
+    {
+      "_id": "68e2da3578535d896090ba43",
+      "name": "Romantic Couple Showpiece",
+      "price": 799,
+      "imageUrl": "https://m.media-amazon.com/images/I/61qJD+JDd7L._SL1500_.jpg"
+    },
+    {
+      "_id": "68e2da3578535d896090ba44",
+      "name": "Sleepyhead L Shape Sofa",
+      "price": 45999,
+      "imageUrl": "https://m.media-amazon.com/images/I/61HO94EEkmL._SL1000_.jpg"
+    },
+    {
+      "_id": "68e2da3578535d896090ba45",
+      "name": "Dining Chair Covers",
+      "price": 1299,
+      "imageUrl": "https://m.media-amazon.com/images/I/81WzPXUJmgL._SL1500_.jpg"
+    },
+    {
+      "_id": "68e2da3578535d896090ba46",
+      "name": "Amazon Echo Pop with Smart Bulb",
+      "price": 4999,
+      "imageUrl": "https://m.media-amazon.com/images/I/61xBQ+GHWlL._SL1000_.jpg"
+    },
+    {
+      "_id": "68e2da3578535d896090ba47",
+      "name": "Wireless Headphones",
+      "price": 3999,
+      "imageUrl": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300"
+    },
+    {
+      "_id": "68e2da3578535d896090ba48",
+      "name": "Smartphone",
+      "price": 24999,
+      "imageUrl": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=300"
+    },
+    {
+      "_id": "68e2da3578535d896090ba49",
+      "name": "Laptop",
+      "price": 54999,
+      "imageUrl": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=300"
+    },
+    {
+      "_id": "68e2da3578535d896090ba4a",
+      "name": "Coffee Maker",
+      "price": 8999,
+      "imageUrl": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=300"
+    },
+    {
+      "_id": "68e2da3578535d896090ba4b",
+      "name": "Running Shoes",
+      "price": 4599,
+      "imageUrl": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300"
+    },
+    {
+      "_id": "68e2da3578535d896090ba4c",
+      "name": "Bluetooth Speaker",
+      "price": 2999,
+      "imageUrl": "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=300"
+    },
+    {
+      "_id": "68e2da3578535d896090ba4d",
+      "name": "Smart Watch",
+      "price": 12999,
+      "imageUrl": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=300"
+    },
+    {
+      "_id": "68e2da3578535d896090ba4e",
+      "name": "Tablet",
+      "price": 24999,
+      "imageUrl": "https://images.unsplash.com/photo-1561154464-82e9adf32764?w=300"
+    },
+    {
+      "_id": "68e2da3578535d896090ba4f",
+      "name": "Gaming Mouse",
+      "price": 1999,
+      "imageUrl": "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=300"
+    },
+    {
+      "_id": "68e2da3578535d896090ba50",
+      "name": "Mechanical Keyboard",
+      "price": 3499,
+      "imageUrl": "https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=300"
+    },
+    {
+      "_id": "68e2da3578535d896090ba51",
+      "name": "Monitor",
+      "price": 15999,
+      "imageUrl": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=300"
+    },
+    {
+      "_id": "68e2da3578535d896090ba52",
+      "name": "Desk Lamp",
+      "price": 1299,
+      "imageUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300"
+    },
+    {
+      "_id": "68e2da3578535d896090ba53",
+      "name": "Water Bottle",
+      "price": 599,
+      "imageUrl": "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=300"
+    },
+    {
+      "_id": "68e2da3578535d896090ba54",
+      "name": "Backpack",
+      "price": 1999,
+      "imageUrl": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=300"
+    },
+    {
+      "_id": "68e2da3578535d896090ba55",
+      "name": "Camera",
+      "price": 45999,
+      "imageUrl": "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=300"
+    },
+    {
+      "_id": "68e2da3578535d896090ba56",
+      "name": "Sunglasses",
+      "price": 1799,
+      "imageUrl": "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=300"
+    },
+    {
+      "_id": "68e2da3578535d896090ba57",
+      "name": "Fitness Tracker",
+      "price": 3999,
+      "imageUrl": "https://images.unsplash.com/photo-1576243345690-4e4b79b63288?w=300"
+    },
+    {
+      "_id": "68e2da3578535d896090ba58",
+      "name": "Power Bank",
+      "price": 2499,
+      "imageUrl": "https://images.unsplash.com/photo-1609592808891-4f8a3d1f9e2f?w=300"
+    },
+    {
+      "_id": "68e2da3578535d896090ba59",
+      "name": "USB Cable",
+      "price": 499,
+      "imageUrl": "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=300"
+    },
+    {
+      "_id": "68e2da3578535d896090ba5a",
+      "name": "Phone Case",
+      "price": 899,
+      "imageUrl": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=300"
+    },
+    {
+      "_id": "68e2da3578535d896090ba5b",
+      "name": "Mouse Pad",
+      "price": 399,
+      "imageUrl": "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=300"
+    },
+    {
+      "_id": "68e2da3578535d896090ba5c",
+      "name": "Webcam",
+      "price": 3499,
+      "imageUrl": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=300"
+    },
+    {
+      "_id": "68e2da3578535d896090ba5d",
+      "name": "Microphone",
+      "price": 5999,
+      "imageUrl": "https://images.unsplash.com/photo-1598295893369-1918ffaf89a2?w=300"
+    },
+    {
+      "_id": "68e2da3578535d896090ba5e",
+      "name": "Desk Chair",
+      "price": 7999,
+      "imageUrl": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=300"
+    },
+    {
+      "_id": "68e2da3578535d896090ba5f",
+      "name": "Standing Desk",
+      "price": 12999,
+      "imageUrl": "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=300"
+    },
+    {
+      "_id": "68e2da3578535d896090ba60",
+      "name": "Plant Pot",
+      "price": 699,
+      "imageUrl": "https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=300"
+    },
+    {
+      "_id": "68e2da3578535d896090ba61",
+      "name": "Notebook",
+      "price": 299,
+      "imageUrl": "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=300"
+    },
+    {
+      "_id": "68e2da3578535d896090ba62",
+      "name": "Pen Set",
+      "price": 499,
+      "imageUrl": "https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=300"
+    },
+    {
+      "_id": "68e2da3578535d896090ba63",
+      "name": "Stapler",
+      "price": 199,
+      "imageUrl": "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=300"
+    },
+    {
+      "_id": "68e2da3578535d896090ba64",
+      "name": "Highlighters",
+      "price": 249,
+      "imageUrl": "https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=300"
+    },
+    {
+      "_id": "68e2da3578535d896090ba65",
+      "name": "Paper Clips",
+      "price": 99,
+      "imageUrl": "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=300"
+    },
+    {
+      "_id": "68e2da3578535d896090ba66",
+      "name": "Whiteboard",
+      "price": 1999,
+      "imageUrl": "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=300"
+    },
+    {
+      "_id": "68e2da3578535d896090ba67",
+      "name": "Markers",
+      "price": 399,
+      "imageUrl": "https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=300"
+    },
+    {
+      "_id": "68e2da3578535d896090ba68",
+      "name": "Sticky Notes",
+      "price": 199,
+      "imageUrl": "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=300"
+    },
+    {
+      "_id": "68e2da3578535d896090ba69",
+      "name": "Binder",
+      "price": 599,
+      "imageUrl": "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=300"
+    },
+    {
+      "_id": "68e2da3578535d896090ba6a",
+      "name": "Calculator",
+      "price": 1299,
+      "imageUrl": "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=300"
+    },
+    {
+      "_id": "68e2da3578535d896090ba6b",
+      "name": "Ruler",
+      "price": 99,
+      "imageUrl": "https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=300"
+    }
+  ]
+}

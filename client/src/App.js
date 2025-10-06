@@ -6,30 +6,63 @@ const API_BASE_URL = 'http://localhost:5000';
 
 function App() {
   const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const [cart, setCart] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showCart, setShowCart] = useState(false);
   const [checkoutStatus, setCheckoutStatus] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [searchTerm, setSearchTerm] = useState('');
 
-  const saveCartToStorage = React.useCallback(() => {
-    try {
-      localStorage.setItem('shoppingCart', JSON.stringify(cart));
-    } catch (err) {
-      console.error('Error saving cart:', err);
-    }
-  }, [cart]);
+  const categories = [
+    { id: 'all', name: 'All Products' },
+    { id: 'electronics', name: 'Electronics' },
+    { id: 'fashion', name: 'Fashion' },
+    { id: 'home', name: 'Home & Living' },
+    { id: 'office', name: 'Office' },
+    { id: 'travel', name: 'Travel' }
+  ];
+
+  const getProductCategory = (product) => {
+    const electronicsKeywords = ['phone', 'speaker', 'headphone', 'laptop', 'tablet', 'watch', 'camera', 'echo', 'galaxy', 'smart'];
+    const fashionKeywords = ['sunglasses', 'kurta', 'shoes', 'backpack'];
+    const homeKeywords = ['sofa', 'chair', 'showpiece', 'wall art', 'lamp', 'plant', 'dining'];
+    const officeKeywords = ['notebook', 'pen', 'stapler', 'highlighter', 'paper clip', 'whiteboard', 'marker', 'binder', 'calculator', 'ruler'];
+    const travelKeywords = ['bag', 'backpack', 'trolley'];
+
+    const name = product.name.toLowerCase();
+    
+    if (electronicsKeywords.some(keyword => name.includes(keyword))) return 'electronics';
+    if (fashionKeywords.some(keyword => name.includes(keyword))) return 'fashion';
+    if (homeKeywords.some(keyword => name.includes(keyword))) return 'home';
+    if (officeKeywords.some(keyword => name.includes(keyword))) return 'office';
+    if (travelKeywords.some(keyword => name.includes(keyword))) return 'travel';
+    
+    return 'other';
+  };
 
   useEffect(() => {
     fetchProducts();
-    loadCartFromStorage();
   }, []);
 
   useEffect(() => {
-    if (cart.length > 0 || cart.length === 0) {
-      saveCartToStorage();
+    let filtered = products;
+
+    if (selectedCategory !== 'all') {
+      filtered = filtered.filter(product => 
+        getProductCategory(product) === selectedCategory
+      );
     }
-  }, [cart, saveCartToStorage]);
+
+    if (searchTerm) {
+      filtered = filtered.filter(product =>
+        product.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+
+    setFilteredProducts(filtered);
+  }, [products, selectedCategory, searchTerm]);
 
   const fetchProducts = async () => {
     try {
@@ -51,19 +84,6 @@ function App() {
     }
   };
 
-  const loadCartFromStorage = () => {
-    try {
-      const savedCart = localStorage.getItem('shoppingCart');
-      if (savedCart) {
-        const parsed = JSON.parse(savedCart);
-        setCart(Array.isArray(parsed) ? parsed : []);
-      }
-    } catch (err) {
-      console.error('Error loading cart:', err);
-      localStorage.removeItem('shoppingCart');
-    }
-  };
-
   const addToCart = (product) => {
     setCart(prevCart => {
       const existingItem = prevCart.find(item => item._id === product._id);
@@ -76,7 +96,10 @@ function App() {
         );
       }
       
-      return [...prevCart, { ...product, quantity: 1 }];
+      // Ensure price is stored as a number
+      const price = typeof product.price === 'number' ? product.price : parseFloat(product.price) || 0;
+      
+      return [...prevCart, { ...product, price, quantity: 1 }];
     });
   };
 
@@ -105,8 +128,9 @@ function App() {
 
   const getTotalPrice = () => {
     return cart.reduce((total, item) => {
-      const itemTotal = (item.price || 0) * (item.quantity || 0);
-      return total + itemTotal;
+      const price = typeof item.price === 'number' ? item.price : parseFloat(item.price) || 0;
+      const quantity = typeof item.quantity === 'number' ? item.quantity : parseInt(item.quantity) || 0;
+      return total + (price * quantity);
     }, 0);
   };
 
@@ -135,11 +159,7 @@ function App() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ 
-          items: orderItems,
-          customerInfo: {
-            name: 'Guest Customer',
-            email: 'guest@example.com'
-          }
+          items: orderItems
         }),
       });
 
@@ -151,7 +171,6 @@ function App() {
 
       setCheckoutStatus('success');
       setCart([]);
-      localStorage.removeItem('shoppingCart');
       
       setTimeout(() => {
         setCheckoutStatus(null);
@@ -163,6 +182,11 @@ function App() {
       setCheckoutStatus('error');
       setTimeout(() => setCheckoutStatus(null), 3000);
     }
+  };
+
+  const clearFilters = () => {
+    setSelectedCategory('all');
+    setSearchTerm('');
   };
 
   if (loading) {
@@ -179,7 +203,7 @@ function App() {
         <div className="error">{error}</div>
         <button 
           onClick={fetchProducts}
-          style={{ marginTop: '20px', padding: '10px 20px' }}
+          className="retryBtn"
         >
           Retry
         </button>
@@ -193,14 +217,33 @@ function App() {
         <div className="navContainer">
           <div className="navBrand">
             <div className="logo">🛍️</div>
-            <h1 className="brandName">ShoppingStore</h1>
+            <h1 className="brandName">ShopEase</h1>
+          </div>
+          
+          <div className="navCenter">
+            <div className="searchContainer">
+              <input
+                type="text"
+                placeholder="Search products..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="searchInput"
+              />
+              {searchTerm && (
+                <button 
+                  className="clearSearch"
+                  onClick={() => setSearchTerm('')}
+                >
+                  ✕
+                </button>
+              )}
+            </div>
           </div>
           
           <div className="navActions">
             <button 
               className="cartButton"
               onClick={() => setShowCart(true)}
-              aria-label="Open shopping cart"
             >
               <span className="cartIcon">🛒</span>
               <span className="cartText">Cart</span>
@@ -215,15 +258,52 @@ function App() {
       <main className="mainContent">
         <div className="container">
           <div className="pageHeader">
-            <h2 className="pageTitle">Discover Amazing Products</h2>
-            <p className="pageSubtitle">Find everything you need in one place</p>
+            <h2 className="pageTitle">Premium Collection</h2>
+            <p className="pageSubtitle">Discover exceptional products for every need</p>
+          </div>
+
+          <div className="categoryFilters">
+            <div className="filterHeader">
+              <h3>Shop by Category</h3>
+              {(selectedCategory !== 'all' || searchTerm) && (
+                <button className="clearFilters" onClick={clearFilters}>
+                  Clear All
+                </button>
+              )}
+            </div>
+            <div className="categoryButtons">
+              {categories.map(category => (
+                <button
+                  key={category.id}
+                  className={`categoryButton ${selectedCategory === category.id ? 'active' : ''}`}
+                  onClick={() => setSelectedCategory(category.id)}
+                >
+                  {category.name}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="resultsInfo">
+            <p>
+              Showing {filteredProducts.length} of {products.length} products
+              {selectedCategory !== 'all' && ` in ${categories.find(c => c.id === selectedCategory)?.name}`}
+              {searchTerm && ` matching "${searchTerm}"`}
+            </p>
           </div>
           
-          {products.length === 0 ? (
-            <div className="emptyCart">No products available</div>
+          {filteredProducts.length === 0 ? (
+            <div className="emptyState">
+              <div className="emptyIcon">🔍</div>
+              <h3>No products found</h3>
+              <p>Try adjusting your search or filters</p>
+              <button className="clearFiltersBtn" onClick={clearFilters}>
+                Show All Products
+              </button>
+            </div>
           ) : (
             <ProductGrid 
-              products={products} 
+              products={filteredProducts} 
               onAddToCart={addToCart}
             />
           )}
