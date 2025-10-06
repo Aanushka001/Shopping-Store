@@ -122,7 +122,7 @@ curl http://localhost:5000/api/products/68e2da3478535d896090ba3d
 # Test checkout
 curl -X POST http://localhost:5000/api/checkout \
   -H "Content-Type: application/json" \
-  -d '{"items":[{"productId":"68e2da3478535d896090ba3d","quantity":1}]}'
+  -d '{"items":[{"productId":"[ID]","quantity":1}]}'
 ```
 
 ### Manual Testing Steps
