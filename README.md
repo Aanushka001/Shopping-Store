@@ -31,4 +31,4 @@ Build Shogging Store from the source and install dependencies:
 1. Close the repository:
 
 ```bash
-git clone https://github.com/Aanushka001/Shopping-StorE
+git clone https://github.com/Aanushka001/Shopping-Store
