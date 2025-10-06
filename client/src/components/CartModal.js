@@ -1,13 +1,13 @@
 import React from 'react';
 
-const CartModal = ({ 
-  cart, 
-  onClose, 
-  onUpdateQuantity, 
-  onRemoveFromCart, 
-  onCheckout, 
+const CartModal = ({
+  cart,
+  onClose,
+  onUpdateQuantity,
+  onRemoveFromCart,
+  onCheckout,
   totalPrice,
-  checkoutStatus 
+  checkoutStatus
 }) => {
   const handleQuantityChange = (productId, newQuantity) => {
     const quantity = parseInt(newQuantity) || 0;
@@ -42,9 +42,9 @@ const CartModal = ({
           <>
             <div className="cartItems">
               {cart.map(item => (
-                <div key={item._id} className="cartItem">
-                  <img 
-                    src={item.imageUrl} 
+                <div key={item.id || item._id} className="cartItem">
+                  <img
+                    src={item.imageUrl}
                     alt={item.name}
                     className="itemImage"
                   />
@@ -53,9 +53,9 @@ const CartModal = ({
                     <div className="itemPrice">₹{item.price.toFixed(0)}</div>
                   </div>
                   <div className="quantityControls">
-                    <button 
+                    <button
                       className="quantityBtn"
-                      onClick={() => onUpdateQuantity(item._id, item.quantity - 1)}
+                      onClick={() => onUpdateQuantity(item.id || item._id, item.quantity - 1)}
                     >
                       -
                     </button>
@@ -63,19 +63,19 @@ const CartModal = ({
                       type="number"
                       className="quantityInput"
                       value={item.quantity}
-                      onChange={(e) => handleQuantityChange(item._id, e.target.value)}
+                      onChange={(e) => handleQuantityChange(item.id || item._id, e.target.value)}
                       min="0"
                     />
-                    <button 
+                    <button
                       className="quantityBtn"
-                      onClick={() => onUpdateQuantity(item._id, item.quantity + 1)}
+                      onClick={() => onUpdateQuantity(item.id || item._id, item.quantity + 1)}
                     >
                       +
                     </button>
                   </div>
-                  <button 
+                  <button
                     className="removeBtn"
-                    onClick={() => onRemoveFromCart(item._id)}
+                    onClick={() => onRemoveFromCart(item.id || item._id)}
                   >
                     Remove
                   </button>
@@ -88,7 +88,7 @@ const CartModal = ({
               <span>₹{totalPrice.toFixed(0)}</span>
             </div>
 
-            <button 
+            <button
               className="checkoutBtn"
               onClick={onCheckout}
               disabled={checkoutStatus === 'success'}
