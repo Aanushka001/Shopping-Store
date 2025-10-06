@@ -13,7 +13,6 @@ function App() {
   const [showCart, setShowCart] = useState(false);
   const [checkoutStatus, setCheckoutStatus] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState('all');
-  const [searchTerm, setSearchTerm] = useState('');
 
   const categories = [
     { id: 'all', name: 'All Products' },
@@ -55,14 +54,8 @@ function App() {
       );
     }
 
-    if (searchTerm) {
-      filtered = filtered.filter(product =>
-        product.name.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-    }
-
     setFilteredProducts(filtered);
-  }, [products, selectedCategory, searchTerm]);
+  }, [products, selectedCategory]);
 
   const fetchProducts = async () => {
     try {
@@ -96,7 +89,6 @@ function App() {
         );
       }
       
-      // Ensure price is stored as a number
       const price = typeof product.price === 'number' ? product.price : parseFloat(product.price) || 0;
       
       return [...prevCart, { ...product, price, quantity: 1 }];
@@ -186,7 +178,6 @@ function App() {
 
   const clearFilters = () => {
     setSelectedCategory('all');
-    setSearchTerm('');
   };
 
   if (loading) {
@@ -220,26 +211,6 @@ function App() {
             <h1 className="brandName">ShopEase</h1>
           </div>
           
-          <div className="navCenter">
-            <div className="searchContainer">
-              <input
-                type="text"
-                placeholder="Search products..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="searchInput"
-              />
-              {searchTerm && (
-                <button 
-                  className="clearSearch"
-                  onClick={() => setSearchTerm('')}
-                >
-                  ✕
-                </button>
-              )}
-            </div>
-          </div>
-          
           <div className="navActions">
             <button 
               className="cartButton"
@@ -265,7 +236,7 @@ function App() {
           <div className="categoryFilters">
             <div className="filterHeader">
               <h3>Shop by Category</h3>
-              {(selectedCategory !== 'all' || searchTerm) && (
+              {selectedCategory !== 'all' && (
                 <button className="clearFilters" onClick={clearFilters}>
                   Clear All
                 </button>
@@ -283,20 +254,12 @@ function App() {
               ))}
             </div>
           </div>
-
-          <div className="resultsInfo">
-            <p>
-              Showing {filteredProducts.length} of {products.length} products
-              {selectedCategory !== 'all' && ` in ${categories.find(c => c.id === selectedCategory)?.name}`}
-              {searchTerm && ` matching "${searchTerm}"`}
-            </p>
-          </div>
           
           {filteredProducts.length === 0 ? (
             <div className="emptyState">
               <div className="emptyIcon">🔍</div>
               <h3>No products found</h3>
-              <p>Try adjusting your search or filters</p>
+              <p>Try adjusting your filters</p>
               <button className="clearFiltersBtn" onClick={clearFilters}>
                 Show All Products
               </button>
