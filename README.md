@@ -5,7 +5,7 @@ A modern shopping application with frontend interface and Express backend. Brows
 ## ✨ Features
 
 **Backend**
-- REST API with 50+ products from JSON file
+- REST API with 10+ products from JSON file
 - Product categories (Electronics, Fashion, Home, Office, Travel)
 - Checkout endpoint with order processing
 - CORS enabled for frontend communication
