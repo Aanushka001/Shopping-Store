@@ -42,59 +42,65 @@ const CartModal = ({
           <>
             <div className="cartItems">
               {cart.map(item => (
-                <div key={item.id || item._id} className="cartItem">
-                  <img
-                    src={item.imageUrl}
-                    alt={item.name}
-                    className="itemImage"
-                  />
-                  <div className="itemDetails">
-                    <div className="itemName">{item.name}</div>
-                    <div className="itemPrice">₹{item.price.toFixed(0)}</div>
-                  </div>
-                  <div className="quantityControls">
-                    <button
-                      className="quantityBtn"
-                      onClick={() => onUpdateQuantity(item.id || item._id, item.quantity - 1)}
-                    >
-                      -
-                    </button>
-                    <input
-                      type="number"
-                      className="quantityInput"
-                      value={item.quantity}
-                      onChange={(e) => handleQuantityChange(item.id || item._id, e.target.value)}
-                      min="0"
+                <div key={item._id} className="cartItem">
+                  <div className="cartItemImageContainer">
+                    <img
+                      src={item.imageUrl}
+                      alt={item.name}
+                      className="cartItemImage"
                     />
-                    <button
-                      className="quantityBtn"
-                      onClick={() => onUpdateQuantity(item.id || item._id, item.quantity + 1)}
-                    >
-                      +
-                    </button>
                   </div>
-                  <button
-                    className="removeBtn"
-                    onClick={() => onRemoveFromCart(item.id || item._id)}
-                  >
-                    Remove
-                  </button>
+                  <div className="cartItemDetails">
+                    <div className="cartItemName">{item.name}</div>
+                    <div className="cartItemPrice">₹{item.price.toFixed(0)}</div>
+                    <div className="cartItemControls">
+                      <div className="quantityControls">
+                        <button
+                          className="quantityBtn"
+                          onClick={() => onUpdateQuantity(item._id, item.quantity - 1)}
+                        >
+                          -
+                        </button>
+                        <input
+                          type="number"
+                          className="quantityInput"
+                          value={item.quantity}
+                          onChange={(e) => handleQuantityChange(item._id, e.target.value)}
+                          min="0"
+                        />
+                        <button
+                          className="quantityBtn"
+                          onClick={() => onUpdateQuantity(item._id, item.quantity + 1)}
+                        >
+                          +
+                        </button>
+                      </div>
+                      <button
+                        className="removeBtn"
+                        onClick={() => onRemoveFromCart(item._id)}
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
 
-            <div className="cartTotal">
-              <span>Total:</span>
-              <span>₹{totalPrice.toFixed(0)}</span>
-            </div>
+            <div className="cartFooter">
+              <div className="cartTotal">
+                <span>Total:</span>
+                <span>₹{totalPrice.toFixed(0)}</span>
+              </div>
 
-            <button
-              className="checkoutBtn"
-              onClick={onCheckout}
-              disabled={checkoutStatus === 'success'}
-            >
-              {checkoutStatus === 'success' ? 'Order Placed!' : 'Checkout'}
-            </button>
+              <button
+                className="checkoutBtn"
+                onClick={onCheckout}
+                disabled={checkoutStatus === 'success'}
+              >
+                {checkoutStatus === 'success' ? 'Order Placed!' : 'Checkout'}
+              </button>
+            </div>
           </>
         )}
       </div>

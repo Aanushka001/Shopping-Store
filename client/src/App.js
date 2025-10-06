@@ -66,11 +66,11 @@ function App() {
 
   const addToCart = (product) => {
     setCart(prevCart => {
-      const existingItem = prevCart.find(item => item.id === product.id);
+      const existingItem = prevCart.find(item => item._id === product._id);
       
       if (existingItem) {
         return prevCart.map(item =>
-          item.id === product.id
+          item._id === product._id
             ? { ...item, quantity: item.quantity + 1 }
             : item
         );
@@ -94,13 +94,13 @@ function App() {
     
     setCart(prevCart =>
       prevCart.map(item =>
-        item.id === productId ? { ...item, quantity } : item
+        item._id === productId ? { ...item, quantity } : item
       )
     );
   };
 
   const removeFromCart = (productId) => {
-    setCart(prevCart => prevCart.filter(item => item.id !== productId));
+    setCart(prevCart => prevCart.filter(item => item._id !== productId));
   };
 
   const getTotalPrice = () => {
@@ -125,7 +125,7 @@ function App() {
       setCheckoutStatus('processing');
 
       const orderItems = cart.map(item => ({
-        productId: item.id,
+        productId: item._id, 
         quantity: item.quantity
       }));
 
