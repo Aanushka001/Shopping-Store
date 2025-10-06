@@ -1,32 +1,35 @@
-#  Simple Shopping Cart
+# Simple Shopping Cart
 
-A minimal e-commerce application with React frontend and Express backend. Browse products, manage cart with localStorage persistence, and complete checkouts.
+A modern shopping application with frontend interface and Express backend. Browse products, manage cart, and complete checkouts with a beautiful UI.
 
-##  Features
+## ✨ Features
 
 **Backend**
-- REST API with 47+ hardcoded products
-- Cart management (add, update, remove)
-- Checkout endpoint with order logging
-- In-memory order storage
+- REST API with 50+ products from JSON file
+- Product categories (Electronics, Fashion, Home, Office, Travel)
+- Checkout endpoint with order processing
+- CORS enabled for frontend communication
+- Product search by ID endpoint
 
 **Frontend**
-- Responsive product grid
-- Add to cart functionality
-- Cart modal with quantity controls
-- LocalStorage persistence
-- Real-time price calculation
+- Responsive product grid with category filters
+- Real-time cart management with modal interface
+- Add to cart functionality with quantity controls
+- Price calculation and total display
+- Modern UI with gradients and animations
+- Centered navigation and clean layout
 
 ## 🛠️ Tech Stack
 
-**Frontend:** React, JavaScript, CSS3, Fetch API  
-**Backend:** Node.js, Express.js, CORS
+**Frontend:** JavaScript, CSS3, Fetch API  
+**Backend:** Node.js, Express.js, CORS  
+**Data Storage:** JSON files
 
 ## 📁 Project Structure
 
 ```
-ShoppingCart/
-├── client/
+shopping-cart/
+├── client/                 
 │   ├── public/
 │   │   └── index.html
 │   ├── src/
@@ -36,114 +39,143 @@ ShoppingCart/
 │   │   ├── App.js
 │   │   ├── index.js
 │   │   └── index.css
-│   ├── .env
-│   ├── .gitignore
-│   └── package.json
-├── server/
+│   ├── package.json
+│   └── .gitignore
+├── server/               
 │   ├── server.js
-│   └── package.json
-├── test_api.sh
-├── Products_api_test.sh
-└── project_structure.txt
+│   ├── Products.json      
+│   ├── package.json
+│   └── package-lock.json
+├── Products_api_test.sh   
+├── test_api.sh           
+├── project_structure.txt 
+└── README.md
 ```
 
-##  Getting Started
+## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js (v14+)
+- Node.js (v14 or higher)
 - npm
-- Git Bash (for running test scripts on Windows)
 
 ### Installation & Setup
 
-**1. Clone the repository**
+**1. Clone and setup**
 ```bash
-git clone https://github.com/Aanushka001/Shopping-Store.git
-cd Shopping-Store
+git clone <your-repo-url>
+cd shopping-cart
 ```
 
-**2. Install dependencies**
+**2. Install backend dependencies**
 ```bash
 cd server
 npm install
+```
 
+**3. Install frontend dependencies**
+```bash
 cd ../client
 npm install
 ```
 
-**3. Run the application**
+**4. Run the application**
 
-Terminal 1 - Start Backend:
+Start Backend Server (Terminal 1):
 ```bash
 cd server
 npm start
 ```
 Server runs on `http://localhost:5000`
 
-Terminal 2 - Start Frontend:
+Start Frontend (Terminal 2):
 ```bash
 cd client
 npm start
 ```
-Client runs on `http://localhost:3000`
+Application runs on `http://localhost:3000`
 
-**4. Access the app**  
-Open browser: `http://localhost:3000`
+**5. Access the application**  
+Open your browser: `http://localhost:3000`
 
 ## 🧪 Testing
 
-### Run Full API Test Suite
+### Run API Tests
 ```bash
+# Test products API
+./Products_api_test.sh
+
+# Run complete test suite
 ./test_api.sh
 ```
-Tests all endpoints: health, products, cart, checkout, orders, error handling
 
-### Run Products API Test
+### Manual Testing
 ```bash
-./Products_api_test.sh
-```
-Tests product endpoints only: get all, get by ID, invalid IDs
+# Test server health
+curl http://localhost:5000/api/health
 
-### Expected Test Results
-```
-All tests passed.
-Passed: 4/4 (Products test)
-16 endpoint tests (Full test)
+# Test products endpoint
+curl http://localhost:5000/api/products
+
+# Test product by ID
+curl http://localhost:5000/api/products/68e2da3478535d896090ba3d
+
+# Test checkout
+curl -X POST http://localhost:5000/api/checkout \
+  -H "Content-Type: application/json" \
+  -d '{"items":[{"productId":"68e2da3478535d896090ba3d","quantity":1}]}'
 ```
 
-##  API Endpoints
+### Manual Testing Steps
+1. Open `http://localhost:3000` in your browser
+2. Browse products in the responsive grid
+3. Filter by categories using centered category buttons
+4. Click "Add to Cart" on any product
+5. Click cart button (top right) to view cart modal
+6. Update quantities using +/- buttons or input field
+7. Remove items with "Remove" button
+8. Click "Checkout" to complete your order
+9. Observe success/error messages
+
+## 📊 API Endpoints
 
 ### Products
-- `GET /api/products` - Get all products
-- `GET /api/products/:id` - Get product by ID
+- `GET /api/products` - Get all products (50+ items)
+- `GET /api/products/:id` - Get specific product by ID
+- `GET /api/health` - Server health check
 
-### Cart
-- `GET /api/cart` - Get cart contents
-- `POST /api/cart` - Add to cart `{ "productId": "id", "quantity": 1 }`
-- `PUT /api/cart/:id` - Update quantity `{ "quantity": 2 }`
-- `DELETE /api/cart/:id` - Remove item
-- `DELETE /api/cart` - Clear cart
+### Checkout
+- `POST /api/checkout` - Process order
+  ```json
+  {
+    "items": [
+      {
+        "productId": "product_id",
+        "quantity": 2
+      }
+    ]
+  }
+  ```
 
-### Checkout & Orders
-- `POST /api/checkout` - Complete order `{ "items": [...], "customerInfo": {...} }`
-- `GET /api/orders` - Get all orders
-- `GET /api/orders/:id` - Get order by ID
+## 🔧 Key Features
 
-### System
-- `GET /api/health` - Health check
-- `GET /` - API info
+- **Category Filtering**: Centered category buttons for easy navigation
+- **Shopping Cart**: Slide-in modal with quantity management
+- **Responsive Design**: Works on all device sizes
+- **Real-time Updates**: Instant cart updates and price calculations
+- **Order Processing**: Complete checkout flow with validation
+- **Clean UI**: Modern design with reduced spacing and centered layout
+- **Product Management**: Full CRUD operations for products
 
-## Manual Testing
+## 📝 Notes
 
-1. Open `http://localhost:3000`
-2. Browse products in the grid
-3. Click "Add to Cart" on any product
-4. Click cart icon (top right) to view cart
-5. Update quantities or remove items
-6. Click "Checkout" to complete order
-7. Refresh page - cart persists via localStorage
+- Product data is stored in `server/Products.json`
+- No database required - uses JSON file storage
+- Frontend communicates with backend via REST API
+- Cart state persists during the browser session
+- All API endpoints include proper error handling and logging
 
 ##  Author
 
 **Aanushka**  
 GitHub: [@Aanushka001](https://github.com/Aanushka001)
+```
