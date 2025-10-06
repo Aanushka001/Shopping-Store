@@ -166,16 +166,3 @@ curl -X POST http://localhost:5000/api/checkout \
 - **Clean UI**: Modern design with reduced spacing and centered layout
 - **Product Management**: Full CRUD operations for products
 
-## 📝 Notes
-
-- Product data is stored in `server/Products.json`
-- No database required - uses JSON file storage
-- Frontend communicates with backend via REST API
-- Cart state persists during the browser session
-- All API endpoints include proper error handling and logging
-
-##  Author
-
-**Aanushka**  
-GitHub: [@Aanushka001](https://github.com/Aanushka001)
-```
