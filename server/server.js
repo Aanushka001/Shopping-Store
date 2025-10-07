@@ -8,8 +8,11 @@ const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(json());
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-const productsFilePath = join(process.cwd(), 'server', 'Products.json');
+const productsFilePath = join(__dirname, 'Products.json');
+
 
 let products = [];
 let orderCounter = 1;
