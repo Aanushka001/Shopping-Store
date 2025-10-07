@@ -5,7 +5,7 @@ A modern shopping application with frontend interface and Express backend. Brows
 ## ✨ Features
 
 **Backend**
-- REST API with 50+ products from JSON file
+- REST API with 10+ products from JSON file
 - Product categories (Electronics, Fashion, Home, Office, Travel)
 - Checkout endpoint with order processing
 - CORS enabled for frontend communication
@@ -122,7 +122,7 @@ curl http://localhost:5000/api/products/68e2da3478535d896090ba3d
 # Test checkout
 curl -X POST http://localhost:5000/api/checkout \
   -H "Content-Type: application/json" \
-  -d '{"items":[{"productId":"68e2da3478535d896090ba3d","quantity":1}]}'
+  -d '{"items":[{"productId":"[ID]","quantity":1}]}'
 ```
 
 ### Manual Testing Steps
@@ -166,16 +166,3 @@ curl -X POST http://localhost:5000/api/checkout \
 - **Clean UI**: Modern design with reduced spacing and centered layout
 - **Product Management**: Full CRUD operations for products
 
-## 📝 Notes
-
-- Product data is stored in `server/Products.json`
-- No database required - uses JSON file storage
-- Frontend communicates with backend via REST API
-- Cart state persists during the browser session
-- All API endpoints include proper error handling and logging
-
-##  Author
-
-**Aanushka**  
-GitHub: [@Aanushka001](https://github.com/Aanushka001)
-```
