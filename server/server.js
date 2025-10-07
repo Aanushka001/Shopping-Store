@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(json());
 
-const productsFilePath = join(process.cwd(), 'server', 'products.json');
+const productsFilePath = join(process.cwd(), 'server', 'Products.json');
 
 let products = [];
 let orderCounter = 1;
