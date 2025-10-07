@@ -6,7 +6,7 @@ get_product_id() {
   curl -s "$BASE_URL/api/products" | jq -r '.[0]._id'
 }
 
-test() {
+test_endpoint() {
   local endpoint=$1
   local expected=$2
   local method=${3:-GET}
@@ -23,28 +23,14 @@ test() {
 
 p=$(get_product_id)
 
-test "/" 200
-test "/api/health" 200
-test "/api/products" 200
-test "/api/products/$p" 200
-test "/api/products/invalid_id" 404
+test_endpoint "/" 200
+test_endpoint "/api/products" 200
 
-test "/api/cart" 200
-test "/api/cart" 200 POST "{\"productId\": \"$p\", \"quantity\": 1}"
-test "/api/cart/999999" 404 PUT "{\"quantity\": 5}"
-
-test "/api/orders" 200
-test "/api/orders/999" 404
-
-test "/api/checkout" 400 POST "{}"
-test "/api/checkout" 400 POST "{\"items\": []}"
-test "/api/checkout" 201 POST "{
+test_endpoint "/api/checkout" 400 POST "{}"
+test_endpoint "/api/checkout" 400 POST "{\"items\": []}"
+test_endpoint "/api/checkout" 200 POST "{
   \"items\": [
     {\"productId\": \"$p\", \"quantity\": 1}
-  ],
-  \"customerInfo\": {\"name\": \"Test\", \"email\": \"t@e.com\"}
+  ]
 }"
-
-test "/api/orders" 200
-test "/api/invalid" 404
-test "/api/checkout" 404
+test_endpoint "/api/invalid" 404

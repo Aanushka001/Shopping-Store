@@ -1,4 +1,3 @@
-import React from 'react';
 
 const ProductGrid = ({ products, onAddToCart }) => {
   const getCategory = (name) => {
