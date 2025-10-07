@@ -3,7 +3,8 @@ import ProductGrid from "./components/ProductGrid";
 import CartModal from "./components/CartModal";
 import "./index.css";
 
-const API_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:5000";
+// const API_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:5000";
+const API_URL = "https://shopping-store-d600.onrender.com";
 
 function App() {
   const [products, setProducts] = useState([]);
