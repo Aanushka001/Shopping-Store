@@ -3,8 +3,8 @@ import ProductGrid from './components/ProductGrid';
 import CartModal from './components/CartModal';
 import Parse from 'parse';
 
-Parse.initialize("E3r1IdF6lgqb1qiYzQ6uTA66C4cFps42FsZPBJi9");
-Parse.serverURL = 'https://parseapi.back4app.com';
+Parse.initialize(process.env.REACT_APP_PARSE_APP_ID);
+Parse.serverURL = process.env.REACT_APP_PARSE_SERVER_URL;
 
 function App() {
   const [products, setProducts] = useState([]);
